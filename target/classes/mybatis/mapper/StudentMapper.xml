@@ -12,6 +12,11 @@
         where s_id = #{s_id}
     </select>
 
+    <select id="getStudentByPhone" resultType="Student">
+        select *
+        from reservation_demo.student
+        where s_phone_number = #{phone}
+    </select>
 
     <update id="updatePassword">
         update reservation_demo.student

@@ -13,6 +13,8 @@ public interface StudentService {
 
     Student getStudentById(String s_id);
 
+    Student getStudentByPhone(String phone);
+
     int updatePassword(String s_id, String new_password);
 
     List<Student> getAll();

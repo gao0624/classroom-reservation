@@ -11,6 +11,7 @@ import java.util.Map;
 @Mapper
 public interface StudentDao {
     Student getStudentById(String s_id);
+    Student getStudentByPhone(String phone);
 
     List<Student> getAll();
 

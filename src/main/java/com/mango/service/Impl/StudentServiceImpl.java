@@ -28,6 +28,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public Student getStudentByPhone(String phone){return studentDao.getStudentByPhone(phone);}
+    @Override
     public int updatePassword(String s_id, String new_password) {
         return studentDao.updatePassword(s_id,new_password);
     }
