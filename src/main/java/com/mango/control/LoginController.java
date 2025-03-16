@@ -35,8 +35,9 @@ public class LoginController {
     @GetMapping("/logincheck")
     public String check(@RequestParam("username") String s_id, @RequestParam("password") String psw, Model model, HttpServletRequest request) {
 
-
+        System.out.println(s_id);
         Student student = service.getStudentById(s_id);
+        System.out.println(student);
         if (student == null) {
             model.addAttribute("msg","该用户不存在!");
             return "login";

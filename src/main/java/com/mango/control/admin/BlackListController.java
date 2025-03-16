@@ -21,7 +21,6 @@ public class BlackListController {
     @Autowired
     BlackListServiceImpl blackListService;
 
-
     @GetMapping("/blacklist")
     public String blacklist(HttpServletRequest request, Model model) {
         List<Student> allBlackedStudent = blackListService.getAllBlackedStudent();
