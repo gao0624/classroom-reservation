@@ -16,13 +16,6 @@
             <div class="hamburger">
                 <span class="line"></span><span class="line"></span><span class="line"></span>
             </div>
-<!--            <div class="left-header content-header__menu">-->
-<!--                <ul class="list-unstyled">-->
-<!--                    <li class="nav-link btn">-->
-<!--                        <a th:href="@{/make_reservation}"><i class="far fa-calendar-check"></i> <span> 新添加自习预约 </span></a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </div>-->
         </div>
         <div class="header-right">
             <div class="fullscreen notification_dropdown">
@@ -85,8 +78,8 @@
 
 
 
-            <li class="has-submenu">
-                <a href="#" class="has-arrow mm-collapsed">
+            <li th:class="${active=='all_classroom_test'? 'has-submenu active':'has-submenu'}">
+                <a th:href="@{/all_classroom_test}">
                     <i class="fas fa-calendar-alt"></i>
                     <span class="nav-label">大厅管理</span>
                 </a>

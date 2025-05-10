@@ -31,6 +31,11 @@ public class ClassroomController {
         return "classroom/all_classroom";
     }
 
+    @GetMapping("/all_classroom_test")
+    public String all_classroom_test(Model model){
+        System.out.println("执行到这里了吗？");
+        return "table/table";
+    }
 
     @GetMapping("/updateClassroomInfo")
     public String updateClassroonInfo(HttpServletRequest request) {
