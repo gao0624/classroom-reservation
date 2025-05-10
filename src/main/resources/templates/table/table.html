@@ -55,7 +55,7 @@
                                     </div>
                                     <!--  回头弄个下拉框-->
                                     <div class="col-4 form-group text-end">
-                                        <button type="button" data-bs-toggle='modal' data-bs-target='#modal-add-classroom' class="btn btn-primary" >添加新店铺</button>
+                                        <button type="button" data-bs-toggle='modal' data-bs-target='#modal-add-classroom' class="btn btn-primary" >添加新大厅</button>
                                         <!--                                        <button type="button" data-bs-toggle='modal' data-bs-target='#modal-add-classroom-available' class="btn btn-primary">新增教室可用时段</button>-->
                                     </div>
                                 </div>
@@ -67,10 +67,10 @@
                                         <tr>
                                             <th>大厅id</th>
                                             <th>所属店铺id</th>
-                                            <th>店铺名称</th>
+                                            <th>大厅名称</th>
                                             <th>店铺名称</th>
                                             <th>店铺地址</th>
-                                            <th>店铺台球桌数</th>
+                                            <th>大厅是否可用</th>
                                             <th></th>
                                         </tr>
                                         </thead>
@@ -81,7 +81,7 @@
                                                 <td th:text="${table.name}"></td>
                                                 <td th:text="${list[iterStat.index].room_name}">
                                                 <td th:text="${list[iterStat.index].building_id}">
-                                                <td th:text="${list[iterStat.index].available_seat}">
+                                                <td th:text="${list[iterStat.index].is_multimedia_room}">
                                             </tr>
                                         </tbody>
                                     </table>
@@ -132,10 +132,10 @@
 </form>
 
 <div class="modal fade" id='modal-add-classroom'  tabindex="-1" aria-labelledby="modal-title-edit-row" aria-hidden="true">
-    <form class="modal-dialog modal-lg" th:action="@{/add_new_classroom}">
+    <form class="modal-dialog modal-lg" th:action="@{/add_table}">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">店铺信息</h5>
+                <h5 class="modal-title">大厅信息</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -148,56 +148,18 @@
                                 <div class="row">
                                     <div class="col-xl-4">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="店铺编号" name="room_id">
+                                            <input type="text" class="form-control" placeholder="大厅编号" name="room_id">
                                         </div>
                                     </div>
                                     <div class="col-xl-4">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="店铺名称" name="room_name">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4">
-                                        <div class="form-group">
-                                            <select class="form-control form-select" name="room_floor">
-                                                <option value="" style="display: none">大厅数量</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-4">
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <input type="text" class="form-control" placeholder="大厅台球桌数" name="available_seat">
-                                            </div>
+                                            <input type="text" class="form-control" placeholder="大厅名称" name="room_name">
                                         </div>
                                     </div>
                                     <div class="col-xl-4">
                                         <div class="form-group row">
                                             <div class="col-lg-12">
-                                                <input type="text" class="form-control" placeholder="店铺地址" name="building_id">
-                                                <!--                                                <select class="form-control form-select" name="building_id">-->
-                                                <!--                                                    <option value="" style="display: none">所属教学楼编号</option>-->
-                                                <!--                                                    <option>1</option>-->
-                                                <!--                                                    <option>2</option>-->
-                                                <!--                                                    <option>3</option>-->
-                                                <!--                                                    <option>4</option>-->
-                                                <!--                                                </select>-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4">
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <select class="form-control form-select" name="is_multimedia_room">
-                                                    <option value="" style="display: none">是否可以投入使用</option>
-                                                    <option>是</option>
-                                                    <option>否</option>
-                                                </select>
+                                                <input type="text" class="form-control" placeholder="所属店铺" name="available_seat">
                                             </div>
                                         </div>
                                     </div>

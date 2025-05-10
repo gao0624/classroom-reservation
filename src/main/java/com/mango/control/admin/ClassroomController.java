@@ -52,7 +52,7 @@ public class ClassroomController {
                 if (t.getClassroom_id().equals(c.getRoom_id()) ){
                     classroom.setRoom_name(c.getRoom_name());
                     classroom.setBuilding_id(c.getBuilding_id());
-                    classroom.setAvailable_seat(c.getAvailable_seat());
+                    classroom.setIs_multimedia_room(c.getIs_multimedia_room());
                     list.add(classroom);
                 }
             }
@@ -63,6 +63,24 @@ public class ClassroomController {
         System.out.println(table);
         System.out.println(list);
         return "table/table";
+    }
+
+    @GetMapping("/add_table")
+    public String add_table(HttpServletRequest request){
+        String id = request.getParameter("room_id");
+        String name = request.getParameter("room_name");
+        String shop_name = request.getParameter("available_seat");
+        List<Classroom> classrooms = classroomService.getAll();
+        for(int i = 0; i < classrooms.size(); i++){
+            if(classrooms.get(i).getRoom_name().equals(shop_name)){
+                shop_name = classrooms.get(i).getRoom_id();
+            }
+        }
+        Table table = new Table(id,shop_name,name);
+        System.out.println(table);
+        tableService.addTable(table);
+
+        return "redirect:all_classroom_test";
     }
 
     @GetMapping("/updateClassroomInfo")

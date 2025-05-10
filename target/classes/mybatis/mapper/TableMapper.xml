@@ -9,9 +9,9 @@
     </select>
 
     <insert id="addTable" parameterType="table">
---         INSERT INTO reservation_demo.custome_reservation
---         (name, phone, shop_name, hall_name, table_number, start_end_time, reservation_time)
---         VALUES
---             (#{name}, #{phone}, #{shop_name}, #{hall_name}, #{table_number}, #{start_end_time}, #{reservation_time})
+        INSERT INTO reservation_demo.table
+        (id, classroom_id, name)
+        VALUES
+            (#{id}, #{classroom_id}, #{name})
     </insert>
 </mapper>
