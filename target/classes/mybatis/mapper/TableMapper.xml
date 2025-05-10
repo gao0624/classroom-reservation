@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mango.dao.TableDao">
+    <select id="getAllTable" resultType="Table">
+        SELECT * FROM reservation_demo.table
+    </select>
+
+    <insert id="addTable" parameterType="table">
+--         INSERT INTO reservation_demo.custome_reservation
+--         (name, phone, shop_name, hall_name, table_number, start_end_time, reservation_time)
+--         VALUES
+--             (#{name}, #{phone}, #{shop_name}, #{hall_name}, #{table_number}, #{start_end_time}, #{reservation_time})
+    </insert>
+</mapper>

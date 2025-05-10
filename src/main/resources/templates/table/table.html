@@ -65,25 +65,24 @@
                                     <table id="example1" class="display nowrap">
                                         <thead>
                                         <tr>
-                                            <th>店铺id</th>
+                                            <th>大厅id</th>
+                                            <th>所属店铺id</th>
+                                            <th>店铺名称</th>
                                             <th>店铺名称</th>
                                             <th>店铺地址</th>
-                                            <th>大厅数量</th>
-                                            <th>台球桌数量</th>
-                                            <th>是否可以应该客</th>
+                                            <th>店铺台球桌数</th>
                                             <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-
-                                        <tr th:each="classroom:${classrooms}">
-                                            <td th:text="${classroom.room_id}"></td>
-                                            <td th:text="${classroom.room_name}"></td>
-                                            <td th:text="${classroom.building_id}"></td>
-                                            <td th:text="${classroom.room_floor}"></td>
-                                            <td th:text="${classroom.available_seat}"></td>
-                                            <td th:text="${classroom.is_multimedia_room}"></td>
-                                        </tr>
+                                            <tr th:each="table, iterStat :${table}">
+                                                <td th:text="${table.id}"></td>
+                                                <td th:text="${table.classroom_id}"></td>
+                                                <td th:text="${table.name}"></td>
+                                                <td th:text="${list[iterStat.index].room_name}">
+                                                <td th:text="${list[iterStat.index].building_id}">
+                                                <td th:text="${list[iterStat.index].available_seat}">
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

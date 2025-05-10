@@ -4,14 +4,17 @@ package com.mango.control.admin;
 import com.mango.pojo.Classroom;
 import com.mango.pojo.RoomAvailableTimeInfo;
 import com.mango.pojo.Student;
+import com.mango.pojo.Table;
 import com.mango.service.ClassroomService;
 import com.mango.service.Impl.ClassroomServiceImpl;
+import com.mango.service.Impl.TableImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +26,9 @@ public class ClassroomController {
     @Autowired
     ClassroomServiceImpl classroomService;
 
+    @Autowired
+    TableImpl tableService;
+
     @GetMapping("/all_classroom")
     public String all_classroom(Model model) {
         List<Classroom> classrooms = classroomService.getAll();
@@ -33,7 +39,29 @@ public class ClassroomController {
 
     @GetMapping("/all_classroom_test")
     public String all_classroom_test(Model model){
-        System.out.println("执行到这里了吗？");
+        List<Table> table = tableService.getAllTable();
+        List<Classroom> classrooms = classroomService.getAll();
+        List<Classroom> list = new ArrayList<>();
+        Classroom classroom;
+
+        for (int i = 0; i < table.size(); i++){
+            for(int j = 0; j < classrooms.size(); j++){
+                Table t = table.get(i);
+                Classroom c = classrooms.get(j);
+                classroom = new Classroom();
+                if (t.getClassroom_id().equals(c.getRoom_id()) ){
+                    classroom.setRoom_name(c.getRoom_name());
+                    classroom.setBuilding_id(c.getBuilding_id());
+                    classroom.setAvailable_seat(c.getAvailable_seat());
+                    list.add(classroom);
+                }
+            }
+
+        }
+        model.addAttribute("table",table);
+        model.addAttribute("list",list);
+        System.out.println(table);
+        System.out.println(list);
         return "table/table";
     }
 
