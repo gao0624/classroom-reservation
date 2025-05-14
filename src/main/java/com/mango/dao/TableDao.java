@@ -9,4 +9,6 @@ import java.util.List;
 public interface TableDao {
     List<Table> getAllTable();
     void addTable(Table table);
+
+    void deleteTable(String id);
 }

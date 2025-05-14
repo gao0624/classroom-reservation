@@ -1,6 +1,7 @@
 package com.mango.control.admin;
 
 
+import com.mango.dao.ClassroomDao;
 import com.mango.pojo.Classroom;
 import com.mango.pojo.RoomAvailableTimeInfo;
 import com.mango.pojo.Student;
@@ -28,6 +29,9 @@ public class ClassroomController {
 
     @Autowired
     TableImpl tableService;
+
+    @Autowired
+    ClassroomDao classroomDao;
 
     @GetMapping("/all_classroom")
     public String all_classroom(Model model) {
@@ -83,6 +87,14 @@ public class ClassroomController {
         return "redirect:all_classroom_test";
     }
 
+    @GetMapping("/delete_table")
+    public String delete_table(String id){
+        tableService.deleteTable(id);
+        System.out.println(id);
+        return "redirect:all_classroom_test";
+    }
+
+
     @GetMapping("/updateClassroomInfo")
     public String updateClassroonInfo(HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
@@ -121,16 +133,19 @@ public class ClassroomController {
 
     @GetMapping("/classroom_delete")
     public String classroom_delete(String room_id, Model model) {
-        int reservedNums = classroomService.getClassroomReserved(room_id);
-        if (reservedNums > 0) {
-            model.addAttribute("msg","该教室已被预约,无法删除");
-            List<Classroom> classrooms = classroomService.getAll();
-            model.addAttribute("classrooms",classrooms);
-            return "classroom/all_classroom";
-        }else {
-            //删除所有教室相关表 教室，教室时段表，教室可用表等信息
-            classroomService.deleteClassroomInfo(room_id);
-        }
+        System.out.println("执行删除操作");
+        classroomDao.deleteClassroom(room_id);
+        // 这里有bug是因为删除店铺相应的大厅也应该删除 预留
+//        int reservedNums = classroomService.getClassroomReserved(room_id);
+//        if (reservedNums > 0) {
+//            model.addAttribute("msg","该教室已被预约,无法删除");
+//            List<Classroom> classrooms = classroomService.getAll();
+//            model.addAttribute("classrooms",classrooms);
+//            return "classroom/all_classroom";
+//        }else {
+//            //删除所有教室相关表 教室，教室时段表，教室可用表等信息
+//            classroomService.deleteClassroomInfo(room_id);
+//        }
         return "redirect:all_classroom";
     }
 

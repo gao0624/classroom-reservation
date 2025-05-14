@@ -83,8 +83,10 @@
                                             <td th:text="${classroom.room_floor}"></td>
                                             <td th:text="${classroom.available_seat}"></td>
                                             <td th:text="${classroom.is_multimedia_room}"></td>
-                                            <td>
-                                                删除
+                                            <td >
+                                                <a type="button" class="btn badge-primary" th:href="@{/classroom_delete(room_id=${classroom.room_id})}">
+                                                    确认删除
+                                                </a>
                                             </td>
                                         </tr>
                                         </tbody>

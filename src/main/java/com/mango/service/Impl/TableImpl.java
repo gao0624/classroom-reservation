@@ -26,4 +26,9 @@ public class TableImpl implements TableService {
         TableDao.addTable(table);
         return "ok";
     }
+
+    @Override
+    public void deleteTable(String id){
+        TableDao.deleteTable(id);
+    }
 }

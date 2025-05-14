@@ -9,4 +9,6 @@ import java.util.List;
 public interface TableService {
     List<Table> getAllTable();
     String addTable(Table table);
+
+    void deleteTable(String id);
 }

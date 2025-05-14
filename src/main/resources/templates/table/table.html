@@ -82,6 +82,11 @@
                                                 <td th:text="${list[iterStat.index].room_name}">
                                                 <td th:text="${list[iterStat.index].building_id}">
                                                 <td th:text="${list[iterStat.index].is_multimedia_room}">
+                                                <td>
+                                                    <a type="button" class="btn badge-primary" th:href="@{/delete_table(id=${table.id})}">
+                                                        确认删除
+                                                    </a>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -14,4 +14,9 @@
         VALUES
             (#{id}, #{classroom_id}, #{name})
     </insert>
+
+    <delete id="deleteTable" parameterType="String">
+        DELETE FROM reservation_demo.table
+        WHERE id = #{id}
+    </delete>
 </mapper>
