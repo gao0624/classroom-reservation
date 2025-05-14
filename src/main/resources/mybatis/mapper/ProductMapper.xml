@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mango.dao.ProductDao">
+    <select id="getAllProduct" resultType="Product">
+        SELECT * FROM reservation_demo.product
+    </select>
+
+    <insert id="addProduct" parameterType="Product">
+        INSERT INTO reservation_demo.product
+            (id, name, price, image, description)
+        VALUES
+            (#{id}, #{name}, #{price}, #{image}, #{description})
+    </insert>
+
+    <update id="upProduct" parameterType="Product">
+        UPDATE reservation_demo.product
+        SET name = #{name},
+            price = #{price},
+            image = #{image},
+            description = #{description}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteProduct" parameterType="String">
+        DELETE FROM reservation_demo.product
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

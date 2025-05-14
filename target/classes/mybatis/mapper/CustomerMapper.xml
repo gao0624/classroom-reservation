@@ -10,8 +10,8 @@
 
     <insert id="addCustomerReservationInfo" parameterType="CustomerReservationInfo">
         INSERT INTO reservation_demo.custome_reservation
-        (name, phone, shop_name, hall_name, table_number, start_end_time, reservation_time)
+        (name, phone, shop_name, hall_name, table_number, start_end_time, reservation_time, state)
         VALUES
-            (#{name}, #{phone}, #{shop_name}, #{hall_name}, #{table_number}, #{start_end_time}, #{reservation_time})
+            (#{name}, #{phone}, #{shop_name}, #{hall_name}, #{table_number}, #{start_end_time}, #{reservation_time}, #{state})
     </insert>
 </mapper>
